@@ -21,7 +21,7 @@ from django.urls import path
 
 
 def index(_):
-    return HttpResponse("Hello, world. You're at the djsandbox index.")
+    return HttpResponse("Hello, world. This gets updated!")
 
 
 urlpatterns = [
