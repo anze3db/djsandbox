@@ -15,8 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+import time
+
 from django.contrib import admin
-from django.http import HttpResponse
+from django.http import HttpResponse, StreamingHttpResponse
 from django.urls import path
 
 
@@ -24,7 +26,17 @@ def index(_):
     return HttpResponse("Hello, world. This gets updated!")
 
 
+def streaming(_):
+    def generate():
+        for i in range(10):
+            time.sleep(1)
+            yield f"data: {i}\n\n"
+
+    return StreamingHttpResponse(generate(), content_type="text/event-stream")
+
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("streaming/", streaming),
     path("", index),
 ]
