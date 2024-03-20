@@ -31,7 +31,7 @@ SESSION_COOKIE_SECURE = True
 
 CSRF_COOKIE_SECURE = True
 
-ALLOWED_HOSTS = ["localhost", "djsandbox.pecar.me"]
+ALLOWED_HOSTS = ["localhost", "djsandbox.pecar.me", "ddjsandbox.pecar.me", "127.0.0.1"]
 
 
 # Application definition
