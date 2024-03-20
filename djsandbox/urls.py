@@ -37,7 +37,7 @@ def event_stream(_):
 
 def streaming(_):
     def generate():
-        for i in range(3):
+        for i in range(10000):
             time.sleep(1)
             yield f"Resp:{i}"
 
