@@ -30,7 +30,7 @@ def streaming(_):
     def generate():
         for i in range(3):
             time.sleep(1)
-            yield f"data: {i}\n\n"
+            yield f"Response {i}\n\n"
 
     return StreamingHttpResponse(generate(), content_type="text/event-stream")
 
