@@ -28,7 +28,7 @@ def index(_):
 
 def streaming(_):
     def generate():
-        for i in range(10):
+        for i in range(3):
             time.sleep(1)
             yield f"data: {i}\n\n"
 
