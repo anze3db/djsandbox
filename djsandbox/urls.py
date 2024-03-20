@@ -26,17 +26,27 @@ def index(_):
     return HttpResponse("Hello, world. This gets updated!")
 
 
+def event_stream(_):
+    def generate():
+        for i in range(3):
+            time.sleep(1)
+            yield f"Resp:{i}"
+
+    return StreamingHttpResponse(generate(), content_type="text/event-stream")
+
+
 def streaming(_):
     def generate():
         for i in range(3):
             time.sleep(1)
-            yield f"Response {i}\n\n"
+            yield f"Resp:{i}"
 
-    return StreamingHttpResponse(generate(), content_type="text/event-stream")
+    return StreamingHttpResponse(generate())
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("streaming/", streaming),
+    path("event_stream/", event_stream),
     path("", index),
 ]
